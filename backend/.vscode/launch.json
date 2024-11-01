@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Backend Launch",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/backend/bin/Debug/net8.0/backend.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/backend",
+      "stopAtEntry": false,
+      "console": "internalConsole",
+      "logging": {
+        "diagnosticsLog.protocolMessages": false
+      }
+      
+    }
+
+  ]
+}

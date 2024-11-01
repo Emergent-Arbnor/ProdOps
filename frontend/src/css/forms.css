@@ -1,0 +1,52 @@
+div.registerPage, div.loginPage, div.orderPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1000px;
+  margin: 2rem 0 auto 0;
+  box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.75);
+  padding: 2rem;
+  border-radius: 5px;
+
+  & > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    & > div.inputContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    & > div.adminContainer {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      width: 100%;
+      gap: 1rem;
+    }
+
+    & > button {
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-family: "Iceland", sans-serif;
+    }
+
+    & label, input, button {
+      font-size: 30px;
+    }
+  
+    & input[type="checkbox"] {
+      transform: scale(1.5);
+    }
+    
+  }
+
+ 
+
+
+}

@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Gugi&family=Iceland&display=swap');
+
+/*
+.iceland-regular {
+  font-family: "Iceland", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.gugi-regular {
+  font-family: "Gugi", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  
+}
+
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+  background-color: rgb(143, 102, 85);
+  font-family: "Iceland", sans-serif;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}

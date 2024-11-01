@@ -1,0 +1,12 @@
+div.footer {
+  background-color: rgb(37, 93, 143);
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  font-family: "Gugi", sans-serif;
+  width: 100%;
+
+  & > div.footerContainer {
+    max-width: 1000px;
+  }
+}
