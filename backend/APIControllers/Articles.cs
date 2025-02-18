@@ -22,22 +22,24 @@ namespace ProdOps.Api.Controllers
 
             try
             {
-                using (var connection = new NpgsqlConnection(_connectionString))
+                
+                
+                using (NpgsqlConnection connection = new NpgsqlConnection(_connectionString))
                 {
                     connection.Open();
-
-                    // Update articleA
-                    using (var cmd = new NpgsqlCommand("UPDATE articles SET article_count = article_count + @amount WHERE article_name = @name", connection))
+                    
+                    // Update ARTICLE_A
+                    using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE articles SET article_count = article_count + @amount WHERE article_name = @name", connection))
                     {
-                        cmd.Parameters.AddWithValue("amount", request.ArticleAQuantity);
+                        cmd.Parameters.AddWithValue("amount", request.ArticleAQuantity!);
                         cmd.Parameters.AddWithValue("name", "ARTICLE_A");
                         cmd.ExecuteNonQuery();
                     }
 
-                    // Update articleB
-                    using (var cmd = new NpgsqlCommand("UPDATE articles SET article_count = article_count + @amount WHERE article_name = @name", connection))
+                    // Update ARTICLE_B
+                    using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE articles SET article_count = article_count + @amount WHERE article_name = @name", connection))
                     {
-                        cmd.Parameters.AddWithValue("amount", request.ArticleBQuantity);
+                        cmd.Parameters.AddWithValue("amount", request.ArticleBQuantity!);
                         cmd.Parameters.AddWithValue("name", "ARTICLE_B");
                         cmd.ExecuteNonQuery();
                     }
@@ -46,6 +48,7 @@ namespace ProdOps.Api.Controllers
                 // Return success message if the quantities were updated successfully
                 return Ok(new { message = "Quantities updated successfully." });
             }
+            
             catch (Exception ex)
             {
                 // Return a 500 Internal Server Error with exception details if an error occurs
