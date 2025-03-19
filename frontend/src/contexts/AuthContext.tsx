@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
-import { IAuthContext }from "../interfaces/interfaces.ts";
+import { IAuthContext } from "../interfaces/interfaces.ts";
 import { useNavigate } from "react-router-dom";
 
 interface IAuthProviderProps {

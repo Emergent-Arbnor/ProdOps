@@ -1,35 +1,41 @@
-using backend;
+using backend.Repositories;
+using backend.Middleware;
 
 class Program
 {
     static void Main(string[] args)
     {
-        // Initialize the builder
-        WebApplicationBuilder builder = WebApplication.CreateBuilder();
+        // Initialize the builder with args
+        WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-        
         // Add services to the container
-        IServiceCollection services = builder.Services;
-        // Enables controllers for your app
-        services.AddControllers(); 
+        builder.Services.AddSingleton<DatabaseRepository>();
+        builder.Services.AddControllers();
 
+        // Add CORS service
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowLocalhost", policy =>
+            {
+                policy.AllowAnyOrigin()
+                      .AllowAnyMethod()
+                      .AllowAnyHeader();
+            });
+        });
 
         WebApplication app = builder.Build();
 
-        app.Use(async (context, next) =>
-        {
-            // Replacing the request body with a custom stream to handle duplicates
-            context.Request.Body = new CustomJsonStream(context.Request.Body);
+        // Use the custom middleware
+        app.UseMiddleware<CustomJsonStreamMiddleware>();
 
-            // Continue processing
-            await next(); 
-        });
+        // Global exception handling middleware with a route
+        app.UseExceptionHandler("/api/error");
 
-        // Enforce HTTPS redirection to ensure that all HTTP traffic is redirected to HTTPS.
-        app.UseHttpsRedirection();
-
+        app.UseCors("AllowLocalhost");
         // Map controller routes
         app.MapControllers();
+
+        app.Urls.Add("http://localhost:5001");
 
         // Start the application
         app.Run();

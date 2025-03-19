@@ -1,6 +1,6 @@
 import { ReactNode, useRef } from "react";
-import { userAPI } from "../api";
-import { IUser } from "../interfaces/interfaces.ts";
+import { registerUser } from "../api/UserAPI.ts";
+import { IUser } from "../interfaces/UserInterface.ts";
 import "../css/forms.css";
 
 
@@ -19,7 +19,7 @@ export function RegisterPage(): ReactNode {
     }
 
     try {
-      const apiResponse = await userAPI("register", userToRegister);
+      const apiResponse = await registerUser(userToRegister);
       console.log(apiResponse);
     } catch(error){
       console.error(error);

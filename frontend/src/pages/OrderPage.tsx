@@ -1,5 +1,5 @@
 import { ReactNode, useRef } from "react";
-import { orderArticles } from "../api.ts"
+import { orderArticles } from "../api/OrderAPI.ts"
 import "../css/forms.css";
 
 export function OrderPage(): ReactNode {

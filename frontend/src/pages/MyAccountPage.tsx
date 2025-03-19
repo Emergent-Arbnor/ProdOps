@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useAuth } from "../contexts";
 import "../css/forms.css";
-import { removeUser } from "../api.ts";
+import { removeUser } from "../api/UserAPI.ts";
 
 export function MyAccountPage(): ReactNode {
   const userContext = useAuth();

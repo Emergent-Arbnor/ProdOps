@@ -1,8 +1,8 @@
 import { ReactNode, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { IUser } from "../interfaces/interfaces.ts";
+import { IUser } from "../interfaces/UserInterface.ts";
 import { useAuth } from "../contexts";
-import { userAPI } from "../api.ts";
+import { authenticateUser } from "../api/UserAPI.ts";
 import "../css/forms.css";
 
 export function LoginPage(): ReactNode {
@@ -28,8 +28,9 @@ export function LoginPage(): ReactNode {
       
 
     try {
-      let user = await userAPI("validateUser", userToAuthenticate);
-      userContext.login(user.username, user.isAdmin);
+      let user = await authenticateUser(userToAuthenticate);
+      console.log(user);
+      userContext.login(userToAuthenticate.username, user.isAdmin);
       navigate("/dashboard");
 
     } catch(error){
